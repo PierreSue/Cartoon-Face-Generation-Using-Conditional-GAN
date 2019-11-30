@@ -10,7 +10,7 @@ In theis project, ACGAN and VAE were implemented for the cartoon face generation
 
 ## Usage
 
-The detailed usage is listed in each directory. Note that the pretrained models can be download [here](https://drive.google.com/open?id=1BnhKlJb73f67i0kO8ECw6XJvSTAwv4YA). If you want to reproduce the results, rememeber to download the model files and place them in the right places.
+The detailed usage is listed in each directory. Note that the pretrained models can be downloaded [here](https://drive.google.com/open?id=1BnhKlJb73f67i0kO8ECw6XJvSTAwv4YA). If you want to reproduce the results, rememeber to download the model files and place them in the right places.
 
 
 ## Algorithm
