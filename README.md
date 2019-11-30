@@ -2,11 +2,11 @@
 
 In theis project, ACGAN and VAE were implemented for the cartoon face generation. Morevoer, I also did serveral experiments on the model architectures to verify the capabilities of the models.
 
-<img src="https://github.com/PierreSue/Cartoon-Face-Generation-Using-Conditional-GAN/blob/master/Semantic-segmentation/image/diagram.gif" width="60%" height="60%">
+<img src="https://github.com/PierreSue/Cartoon-Face-Generation-Using-Conditional-GAN/blob/master/image/diagram.gif" width="60%" height="60%">
 
 ## Preprocessed Cartoon Set
 
-<img src="https://github.com/PierreSue/Cartoon-Face-Generation-Using-Conditional-GAN/blob/master/Semantic-segmentation/image/Preprocess.png" width="60%" height="60%">
+<img src="https://github.com/PierreSue/Cartoon-Face-Generation-Using-Conditional-GAN/blob/master/image/Preprocess.png" width="60%" height="60%">
 
 ## Usage
 
@@ -17,19 +17,19 @@ The detailed usage is listed in each directory. Note that the pretrained models 
 
 ### 1. ACGAN
 
-<img src="https://github.com/PierreSue/Cartoon-Face-Generation-Using-Conditional-GAN/blob/master/Semantic-segmentation/image/ACGAN-Alg.png" width="60%" height="60%">
+<img src="https://github.com/PierreSue/Cartoon-Face-Generation-Using-Conditional-GAN/blob/master/image/ACGAN-Alg.png" width="60%" height="60%">
 
     In detail, the class label is divided into four categories (4 one-hots), including the hair style, eye color, face, and eyeglasses. Therefore, the dimension of the class label is multi-hot and the dimension is 15 (6+4+3+2). And because of that, the number of outputs from the discriminator becomes 5. 1 for true/fake label, 4 for each one-hot class label. Moreover, different from ACGAN, I replace batch normalization with spectral normalization on every layer in the discriminator. The other details are the same as ACGAN.
 
-<img src="https://github.com/PierreSue/Cartoon-Face-Generation-Using-Conditional-GAN/blob/master/Semantic-segmentation/image/ACGAN-Loss.png" width="60%" height="60%">
+<img src="https://github.com/PierreSue/Cartoon-Face-Generation-Using-Conditional-GAN/blob/master/image/ACGAN-Loss.png" width="60%" height="60%">
 
     The loss terms including two parts. The first part is the adversarial loss that is used in every GAN model. As for the second part, it is the classification loss that includes 4 binary cross entropy(BCE) loss. Aside from dividing classification loss into four BCEloss, other implementation details are the same as ACGAN.
 
 ### 2. VAE
 
-<img src="https://github.com/PierreSue/Cartoon-Face-Generation-Using-Conditional-GAN/blob/master/Semantic-segmentation/image/VAE-Alg.png" width="60%" height="60%">
+<img src="https://github.com/PierreSue/Cartoon-Face-Generation-Using-Conditional-GAN/blob/master/image/VAE-Alg.png" width="60%" height="60%">
 
-<img src="https://github.com/PierreSue/Cartoon-Face-Generation-Using-Conditional-GAN/blob/master/Semantic-segmentation/image/VAE-Loss.png" width="60%" height="60%">
+<img src="https://github.com/PierreSue/Cartoon-Face-Generation-Using-Conditional-GAN/blob/master/image/VAE-Loss.png" width="60%" height="60%">
 
 * Encoder:4-layer CNN(conv + batch_norm + ReLU), and the last layer is divided into two embeddings (sigma and mean)
 
@@ -47,11 +47,11 @@ The detailed usage is listed in each directory. Note that the pretrained models 
 
 ### 1. ACGAN (FID = 76.445)
 
-<img src="https://github.com/PierreSue/Cartoon-Face-Generation-Using-Conditional-GAN/blob/master/Semantic-segmentation/image/original.png" width="60%" height="60%">
+<img src="https://github.com/PierreSue/Cartoon-Face-Generation-Using-Conditional-GAN/blob/master/image/original.png" width="60%" height="60%">
 
 ### 2. ACGAN + batch normalization (FID score = 198.033)
 
-<img src="https://github.com/PierreSue/Cartoon-Face-Generation-Using-Conditional-GAN/blob/master/Semantic-segmentation/image/exp1.png" width="60%" height="60%">
+<img src="https://github.com/PierreSue/Cartoon-Face-Generation-Using-Conditional-GAN/blob/master/image/exp1.png" width="60%" height="60%">
 
 This experiment setting use batch normalization in discriminator instead of spectral normalization, which is the same setting in ACGAN.
 
@@ -59,7 +59,7 @@ We can find that the result is worse (mode collapse is more obvious and the reso
 
 ### 3. ACGAN + multi-hot generation (FID score = 110.305)
 
-<img src="https://github.com/PierreSue/Cartoon-Face-Generation-Using-Conditional-GAN/blob/master/Semantic-segmentation/image/exp2.png" width="60%" height="60%">
+<img src="https://github.com/PierreSue/Cartoon-Face-Generation-Using-Conditional-GAN/blob/master/image/exp2.png" width="60%" height="60%">
 
 This experiment directly drives the discriminator to generator multi- hot representation instead of generating 4 one-hot. Therefore, the number of outputs of the discriminator is 2, where one is for real/fake label, and the other is 15-dim vector for class label prediction.
 
@@ -68,7 +68,7 @@ From the result, we can find that the performance is much worse than the origina
 
 ### 4. ACGAN + gradient penalty (FID score = 93.982)
 
-<img src="https://github.com/PierreSue/Cartoon-Face-Generation-Using-Conditional-GAN/blob/master/Semantic-segmentation/image/exp3.png" width="60%" height="60%">
+<img src="https://github.com/PierreSue/Cartoon-Face-Generation-Using-Conditional-GAN/blob/master/image/exp3.png" width="60%" height="60%">
 
 In this experiment, I add gradient penalty term when training the discriminator and the lambda term is 5 here.
 
@@ -78,10 +78,10 @@ We can find that the training process is the most stable among these methods. I 
 
 * Generate by random noise
 
-<img src="https://github.com/PierreSue/Cartoon-Face-Generation-Using-Conditional-GAN/blob/master/Semantic-segmentation/image/random.png" width="60%" height="60%">
+<img src="https://github.com/PierreSue/Cartoon-Face-Generation-Using-Conditional-GAN/blob/master/image/random.png" width="60%" height="60%">
 
 * Interpolation with two random noises
  
-<img src="https://github.com/PierreSue/Cartoon-Face-Generation-Using-Conditional-GAN/blob/master/Semantic-segmentation/image/interpolation.png" width="60%" height="60%">
+<img src="https://github.com/PierreSue/Cartoon-Face-Generation-Using-Conditional-GAN/blob/master/image/interpolation.png" width="60%" height="60%">
 
 By this two result demo, we can find that the model can generate different faces with different embeddings. Moreover, via interpolation experiment, we can know that the model somehow acquires some conditional knowledge.
