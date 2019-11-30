@@ -78,7 +78,7 @@ We can find that the training process is the most stable among these methods. I 
 
 * Generate by random noise
 
-<img src="https://github.com/PierreSue/Cartoon-Face-Generation-Using-Conditional-GAN/blob/master/image/random.jpg" width="40%" height="40%">
+<img src="https://github.com/PierreSue/Cartoon-Face-Generation-Using-Conditional-GAN/blob/master/image/noise.jpg" width="40%" height="40%">
 
 * Interpolation with two random noises
  
